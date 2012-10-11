@@ -17,7 +17,7 @@
 
 (function(){
 
-var self = $.throttledAjax = function() {
+var self = $.Ajax = function() {
 
 	var request = $.Deferred(),
 		args = arguments;
