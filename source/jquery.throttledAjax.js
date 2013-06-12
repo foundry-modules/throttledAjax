@@ -17,10 +17,13 @@
 
 (function(){
 
-var self = $.Ajax = function() {
+var self = $.Ajax = function(options) {
 
 	var request = $.Deferred(),
 		args = arguments;
+
+	// Allow others to decorate the request object
+	$.isPlainObject(options) && $.isFunction(options.beforeCreate) && options.beforeCreate(request);
 
 	self.queue.addDeferred(function(queue){
 
