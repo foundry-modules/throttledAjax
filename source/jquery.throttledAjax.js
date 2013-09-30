@@ -35,6 +35,10 @@ var self = $.Ajax = function(options) {
 					request.notify
 				);
 
+		if ($.joomla && $.joomla.version >= 3) {
+			self.requestInterval = 1;
+		}
+
 		// Mark this queue as resolved
 		setTimeout(queue.resolve, self.requestInterval);
 
@@ -45,6 +49,6 @@ var self = $.Ajax = function(options) {
 
 self.queue = $.Threads({threadLimit: 1});
 
-self.requestInterval = ($.joomla.version >= 3) ? 1 : 1200;
+self.requestInterval = 1200;
 
 })();
