@@ -45,6 +45,6 @@ var self = $.Ajax = function(options) {
 
 self.queue = $.Threads({threadLimit: 1});
 
-self.requestInterval = 1200;
+self.requestInterval = ($.joomla.version >= 3) ? 1 : 1200;
 
 })();
