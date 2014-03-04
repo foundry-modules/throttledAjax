@@ -35,9 +35,17 @@ var self = $.Ajax = function(options) {
 					request.notify
 				);
 
-		// Mark this queue as resolved
-		setTimeout(queue.resolve, self.requestInterval);
+		var version = $.joomla.version.split("."),
+			majorVersion = version[0],
+			minorVersion = version[1],
+			requestInterval = self.requestInterval;
 
+		if (majorVersion >= 3 && minorVersion >= 2) {
+			requestInterval = 0;
+		}
+
+		// Mark this queue as resolved
+		setTimeout(queue.resolve, requestInterval);
 	});
 
 	return request;
